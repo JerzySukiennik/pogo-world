@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- Pogo World — skeleton-on-a-pogo parkour sandbox. three.js ES modules, zero build. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pogo World</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #222; font-family: "Segoe UI", system-ui, sans-serif; }
+  #app { position: fixed; inset: 0; }
+  canvas { display: block; }
+  #hud {
+    position: fixed; top: 10px; left: 12px; color: #fff; pointer-events: none;
+    text-shadow: 0 1px 3px rgba(0,0,0,.6); user-select: none;
+  }
+  #hud h1 { margin: 0; font-size: 18px; letter-spacing: 2px; }
+  #hud .sub { font-size: 11px; opacity: .75; margin-top: 2px; line-height: 1.5; }
+  #players {
+    position: fixed; top: 10px; right: 12px; color: #fff; font-size: 12px;
+    background: rgba(0,0,0,.35); padding: 4px 10px; border-radius: 12px; user-select: none;
+  }
+  #nameOverlay {
+    position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+    background: rgba(20,16,28,.82); z-index: 10;
+  }
+  #nameCard {
+    background: #2b2340; border: 2px solid #9b4dff; border-radius: 14px; padding: 28px 32px;
+    color: #fff; text-align: center; width: 300px;
+  }
+  #nameCard h2 { margin: 0 0 4px; letter-spacing: 3px; color: #c9a0ff; }
+  #nameCard p { margin: 0 0 14px; font-size: 12px; opacity: .7; }
+  #nameCard input {
+    width: 100%; box-sizing: border-box; padding: 9px 12px; border-radius: 8px; border: 1px solid #6d5a9e;
+    background: #1d1730; color: #fff; font-size: 15px; outline: none; text-align: center;
+  }
+  #nameCard button {
+    margin-top: 14px; width: 100%; padding: 10px; border: 0; border-radius: 8px; cursor: pointer;
+    background: #62d84e; color: #123; font-size: 15px; font-weight: 700; letter-spacing: 1px;
+  }
+  #nameCard button:hover { filter: brightness(1.1); }
+  #toast {
+    position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%);
+    color: #fff; background: rgba(0,0,0,.5); padding: 6px 16px; border-radius: 14px;
+    font-size: 13px; opacity: 0; transition: opacity .3s; pointer-events: none;
+  }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="hud">
+  <h1>POGO WORLD</h1>
+  <div class="sub">WASD move &middot; mouse look &middot; hold SPACE big bounce<br>walls auto-bounce &middot; R respawn &middot; M music</div>
+</div>
+<div id="players">players: 1</div>
+<div id="toast"></div>
+<div id="nameOverlay">
+  <div id="nameCard">
+    <h2>POGO WORLD</h2>
+    <p>skeleton parkour &middot; online sandbox</p>
+    <input id="nameInput" maxlength="14" placeholder="your name" autocomplete="off">
+    <button id="playBtn">PLAY</button>
+  </div>
+</div>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
